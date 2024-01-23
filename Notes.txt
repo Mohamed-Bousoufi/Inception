@@ -1,0 +1,35 @@
+What is Docker?
+
+Docker is a type of containerization platform that packages your application and all its 
+dependencies together.This ensures that your application works seamlessly in any 
+environment.
+
+What is Docker Used For?
+
+Developers can write code and share their work with their colleagues using Docker containers.
+Docker can be useful in pushing applications into a test environment to execute automated and manual tests.
+Developers can find and fix bugs in a development environment. Then, redeploy them to the test environment for validation and testing.
+After testing, you can send the fixed application to the customer easily. You can also push updates to the product environment just as easily.
+
+
+Docker Daemon ?
+
+The background service running on the host that manages building, running and distributing Docker containers.
+The daemon is the process that runs in the operating system which clients talk to.
+
+Docker Hub ?
+
+A registry of Docker images. You can think of the registry as a directory of all available Docker images.
+If required, one can host their own Docker registries and can use them for pulling images.
+
+Docker Architecture
+
+.containers runs on a container host via container Engine (Docker)
+
+container only run an APP & libraries/ RunTine env
+
+share the container HOST OS(run as a process on it)
+
+Lightweight - Can be started/restarted quickly
+
+can be  impacted by other containers
