@@ -1,18 +1,20 @@
-SHELL := /bash/bin
-sudo = ""
-@if [$$(id -u) -eq 0]; then\
-	$(sudo)=sudo
+SHELL := /bin/bash
+sudo := 
 
-
+ifeq ($(shell id -u),0)
+	sudo := sudo
+endif
 
 .PHONY : all clean fclean
 
-
 all : 
-	$(sudo) docker-compose -f src/docker-compose.yml  up --build
+	$(sudo) docker-compose -f src/docker-compose.yml up --build
 
 clean :
-	$(sudo)docker-compose -f src/docker-compose.yml down
+	$(sudo) docker-compose -f src/docker-compose.yml down
 
 fclean :
-	$(sudo)docker rmi $$(docker images -q) && docker volume rm $$(docker volume ls)
+	$(sudo) docker rmi $$(docker images -q) && docker volume rm $$(docker volume ls)
+
+
+
