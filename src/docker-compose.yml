@@ -1,0 +1,53 @@
+version: '3.1'
+
+networks:
+  inception:
+
+services:
+   #Mysql DB
+   mariadb:
+     build: ./requirements/mariadb
+     container_name: mariadb
+     restart: always
+     volumes:
+       - db_data:/var/lib/mysql
+     env_file : 
+        - ./.env
+     networks :
+     - inception
+     healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost"]
+
+  #Wordpress php
+   wordpress-php:
+    depends_on:
+      mariadb :
+          condition: service_healthy
+    build : ./requirements/wordpress
+    container_name : wordpress
+    hostname: wordpress
+    restart : always
+    env_file : ./.env
+    volumes:
+      - files_data:/var/www/html/
+    networks : 
+      - inception
+    
+  #Nginx Service
+   nginx:
+    depends_on:
+      - wordpress-php
+    build : ./requirements/nginx
+    container_name: nginx
+    restart: always
+    ports:
+    -  443:443
+    volumes:
+      - files_data:/var/www/html/
+    networks:
+      - inception
+     
+
+volumes:
+    files_data:
+    db_data:
