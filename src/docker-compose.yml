@@ -51,10 +51,14 @@ services:
 volumes:
     files_data:
       driver: local
-      type : bind
-      target : /home/mbousouf/filesdata
+      driver_opts:
+        type : ""
+        o : 'bind'
+        device: '/home/mbousouf/data/filesdata'
 
     db_data:
       driver : local
-      type : bind
-      target : /home/mbousouf/db_data
+      driver_opts:
+        type : ""
+        o : 'bind'
+        device: '/home/mbousouf/data/mariadb'
