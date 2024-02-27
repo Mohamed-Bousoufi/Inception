@@ -12,7 +12,7 @@ clean :
 	docker-compose -f src/docker-compose.yml down
 
 fclean :
-	docker rmi -f $$(docker images -q) && docker volume rm -f $$(docker volume ls)
+	docker rmi  $$(docker images -q) && docker volume rm  $$(docker volume ls)
 
 
 
