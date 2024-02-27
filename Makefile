@@ -1,10 +1,12 @@
+WHOAMI=mbousouf
+
 ifeq ($(shell id -u),0)
 	sudo := sudo
 endif
 
-ifeq ($(shell if [ -d /home/$(id)/data ] ),1)
-	@mkdir -p /home/$(shell id)/data/filesdata
-	@mkdir -p /home/$(shell id)/data/db_data
+ifeq ($(shell [ -d /home/$(id)/data ] ),1)
+	@mkdir -p /home/$(WHOAMI)/data/filesdata
+	@mkdir -p /home/$(WHOAMI)/data/db_data
 endif
 	
 
