@@ -7,6 +7,7 @@ services:
    #Mysql DB
    mariadb:
      build: ./requirements/mariadb
+     image_name: mariadb:myown
      container_name: mariadb
      restart: always
      volumes:
@@ -26,6 +27,7 @@ services:
     build : ./requirements/wordpress
     container_name : wordpress
     hostname: wordpress
+    image_name: wordpress-php:myown
     restart : always
     env_file : ./.env
     volumes:
@@ -38,6 +40,7 @@ services:
     depends_on:
       - wordpress-php
     build : ./requirements/nginx
+    image_name : nginx:myown
     container_name: nginx
     restart: always
     ports:
@@ -52,13 +55,13 @@ volumes:
     files_data:
       driver: local
       driver_opts:
-        type : ""
+        type : mount
         o : 'bind'
         device: '/home/mbousouf/data/filesdata'
 
     db_data:
       driver : local
       driver_opts:
-        type : ""
+        type : mount
         o : 'bind'
         device: '/home/mbousouf/data/mariadb'
