@@ -50,4 +50,11 @@ services:
 
 volumes:
     files_data:
+      driver: local
+      type : bind
+      target : /home/mbousouf/filesdata
+
     db_data:
+      driver : local
+      type : bind
+      target : /home/mbousouf/db_data
