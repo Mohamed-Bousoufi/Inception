@@ -1,6 +1,6 @@
-
-SETUP = ./src/requirements/pre/setup.sh
 .PHONY : all clean fclean
+
+SETUP = ./src/requirements/tools/setup.sh
 
 
 
@@ -12,7 +12,7 @@ clean :
 	docker-compose -f src/docker-compose.yml down
 
 fclean :
-	docker rmi  $$(docker images -q) && docker volume rm  $$(docker volume ls)
+	docker rmi  $$(docker images -q) && docker volume rm  $$(docker volume ls -q)
 
 
 
