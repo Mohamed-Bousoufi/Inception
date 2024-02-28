@@ -11,7 +11,7 @@ all :
 clean :
 	docker-compose -f src/docker-compose.yml down
 
-fclean :
+fclean : clean
 	docker rmi  $$(docker images -q) && docker volume rm  $$(docker volume ls -q)
 
 
