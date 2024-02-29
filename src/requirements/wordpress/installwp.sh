@@ -18,10 +18,10 @@ if [ ! -d var/www/html ]; then
     chown www-data:www-data /var/www/html/
 fi
 
-cd /var/www/html/
 
-wp core download --allow-root
 if [ ! -f var/www/html/wp-config.php ]; then
+        cd /var/www/html/
+        wp core download --allow-root
         wp config create --dbname=$DB_NAME --dbhost=$DB_HOST --dbuser=$DB_USER --dbpass=$DB_PASSWORD --allow-root
         wp core install --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD  --admin_email=$ADMIN_EMAIL --allow-root
         wp user create $USER_LOG $USER_EML --role=$ROLE --user_pass=$USER_PASS  --allow-root
